@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extensão em Psicologia — UNIP Araraquara 2025-2</title>
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — FLUID SCALE
+    ============================================================ */
+    :root {
+      /* Cores principais */
+      --navy:       #0d1b3e;
+      --navy-mid:   #1a2f5e;
+      --gold:       #f0b429;
+      --gold-light: #fde68a;
+      --white:      #ffffff;
+      --off-white:  #f8f7f4;
+      --gray-100:   #f1f0ed;
+      --gray-200:   #e2e0db;
+      --gray-500:   #6b7280;
+      --gray-700:   #374151;
+      --gray-900:   #111827;
+
+      /* Eixos temáticos */
+      --azul:         #1d4ed8;
+      --azul-light:   #dbeafe;
+      --azul-dark:    #1e3a8a;
+      --laranja:      #d97706;
+      --laranja-light:#fef3c7;
+      --laranja-dark: #92400e;
+      --verde:        #16a34a;
+      --verde-light:  #dcfce7;
+      --verde-dark:   #14532d;
+
+      /* Tipografia fluida — clamp(min, preferred, max) */
+      --text-xs:   clamp(0.70rem, 0.65rem + 0.25vw, 0.80rem);
+      --text-sm:   clamp(0.85rem, 0.80rem + 0.25vw, 0.95rem);
+      --text-base: clamp(0.95rem, 0.90rem + 0.30vw, 1.10rem);
+      --text-lg:   clamp(1.10rem, 1.00rem + 0.50vw, 1.30rem);
+      --text-xl:   clamp(1.25rem, 1.10rem + 0.75vw, 1.60rem);
+      --text-2xl:  clamp(1.50rem, 1.25rem + 1.25vw, 2.10rem);
+      --text-3xl:  clamp(2.00rem, 1.60rem + 2.00vw, 3.20rem);
+      --text-hero: clamp(2.80rem, 2.00rem + 4.00vw, 5.50rem);
+
+      /* Espaçamento fluido */
+      --space-xs:  clamp(0.50rem, 0.40rem + 0.50vw, 0.75rem);
+      --space-sm:  clamp(0.75rem, 0.60rem + 0.75vw, 1.25rem);
+      --space-md:  clamp(1.25rem, 1.00rem + 1.25vw, 2.00rem);
+      --space-lg:  clamp(2.00rem, 1.50rem + 2.50vw, 3.50rem);
+      --space-xl:  clamp(3.00rem, 2.00rem + 4.00vw, 6.00rem);
+
+      /* Layout */
+      --max-width: 1200px;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+    }
+
+    /* ============================================================
+       RESET E BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: var(--text-base);
+      color: var(--gray-900);
+      background: var(--gray-100);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max-width), 100% - 2 * var(--space-md));
+      margin-inline: auto;
+    }
+
+    /* ============================================================
+       C0 — CAPA / HERO
+    ============================================================ */
+    .capa {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e3a6e 100%);
+      color: var(--white);
+      padding-block: var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .capa::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(30,58,138,0.5) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(240,180,41,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .capa-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .capa-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(240,180,41,0.15);
+      border: 1px solid rgba(240,180,41,0.4);
+      color: var(--gold-light);
+      font-size: var(--text-xs);
+      font-family: 'Arial', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .capa-titulo {
+      font-size: var(--text-hero);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .capa-titulo .destaque {
+      color: var(--gold);
+    }
+
+    .capa-subtitulo {
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.75);
+      font-style: italic;
+      max-width: 65ch;
+    }
+
+    .capa-frase {
+      background: linear-gradient(135deg, rgba(240,180,41,0.18), rgba(240,180,41,0.08));
+      border-left: 4px solid var(--gold);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: var(--text-xl);
+      font-weight: 700;
+      font-family: 'Arial', sans-serif;
+      letter-spacing: 0.02em;
+      color: var(--gold-light);
+      max-width: 70ch;
+    }
+
+    /* Grid de métricas da capa */
+    .metricas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+    }
+
+    .metrica-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm) var(--space-md);
+      text-align: center;
+      transition: background 0.2s;
+      container-type: inline-size;
+    }
+
+    .metrica-card:hover {
+      background: rgba(255,255,255,0.10);
+    }
+
+    .metrica-numero {
+      font-size: clamp(2.2rem, 5cqi, 3.8rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      font-family: 'Arial', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .metrica-label {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.70);
+      font-family: 'Arial', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+
+    .metrica-card.destaque-card {
+      background: linear-gradient(135deg, rgba(240,180,41,0.22), rgba(240,180,41,0.10));
+      border-color: rgba(240,180,41,0.35);
+    }
+
+    .metrica-card.destaque-card .metrica-numero {
+      color: var(--gold-light);
+    }
+
+    /* ============================================================
+       SEPARADOR DE SEÇÃO
+    ============================================================ */
+    .secao-separador {
+      height: 4px;
+      background: linear-gradient(90deg, var(--cor-eixo, var(--navy)), transparent);
+    }
+
+    /* ============================================================
+       C1/C2/C3 — EIXOS TEMÁTICOS (template compartilhado)
+    ============================================================ */
+    .eixo {
+      padding-block: var(--space-xl);
+    }
+
+    .eixo-azul   { background: var(--white); --cor-eixo: var(--azul); --cor-light: var(--azul-light); --cor-dark: var(--azul-dark); }
+    .eixo-laranja{ background: var(--off-white); --cor-eixo: var(--laranja); --cor-light: var(--laranja-light); --cor-dark: var(--laranja-dark); }
+    .eixo-verde  { background: var(--white); --cor-eixo: var(--verde); --cor-light: var(--verde-light); --cor-dark: var(--verde-dark); }
+
+    .eixo-header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .eixo-badge {
+      background: var(--cor-eixo);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      padding: 0.30rem 0.80rem;
+      border-radius: 100px;
+      white-space: nowrap;
+      align-self: center;
+    }
+
+    .eixo-turmas {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      color: var(--gray-500);
+      letter-spacing: 0.05em;
+      align-self: center;
+    }
+
+    .eixo-titulo {
+      font-size: var(--text-3xl);
+      font-weight: 900;
+      color: var(--cor-dark);
+      line-height: 1.1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .eixo-prof {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-sm);
+      color: var(--gray-500);
+      margin-bottom: var(--space-md);
+    }
+
+    .eixo-prof strong {
+      color: var(--cor-eixo);
+    }
+
+    /* Layout 2 colunas → 1 no mobile */
+    .eixo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    @media (min-width: 768px) {
+      .eixo-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .eixo-grid {
+        grid-template-columns: 3fr 2fr;
+        gap: var(--space-lg);
+      }
+    }
+
+    /* Coluna de conteúdo */
+    .eixo-col-texto {}
+
+    .eixo-descricao {
+      color: var(--gray-700);
+      margin-bottom: var(--space-md);
+    }
+
+    .eixo-subtemas-titulo {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cor-eixo);
+      margin-bottom: var(--space-xs);
+    }
+
+    .subtemas-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .subtemas-lista li {
+      font-size: var(--text-sm);
+      color: var(--gray-700);
+      padding-left: 1.2em;
+      position: relative;
+    }
+
+    .subtemas-lista li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--cor-eixo);
+      font-size: 0.8em;
+      top: 0.15em;
+    }
+
+    /* Coluna de stats */
+    .eixo-col-stats {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xs);
+    }
+
+    .stat-item {
+      background: var(--cor-light);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm);
+      text-align: center;
+      container-type: inline-size;
+    }
+
+    .stat-numero {
+      font-size: clamp(1.8rem, 6cqi, 2.8rem);
+      font-weight: 900;
+      color: var(--cor-dark);
+      line-height: 1;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .stat-label {
+      font-size: clamp(0.65rem, 3cqi, 0.80rem);
+      font-family: 'Arial', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--cor-eixo);
+      margin-top: 0.25rem;
+    }
+
+    /* Imagem do eixo */
+    .eixo-imagem {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: var(--gray-200);
+    }
+
+    .eixo-imagem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Card de destaque */
+    .destaque-projeto {
+      background: var(--cor-dark);
+      color: white;
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .destaque-projeto-tag {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .destaque-projeto-nome {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .destaque-projeto-desc {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.80);
+      line-height: 1.55;
+    }
+
+    .destaque-projeto-codigo {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.50);
+      margin-top: 0.75rem;
+    }
+
+    /* Modalidade badge */
+    .modalidade-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--cor-light);
+      color: var(--cor-dark);
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* ============================================================
+       C4 — DIVERSIDADE
+    ============================================================ */
+    .diversidade {
+      background: var(--navy);
+      color: white;
+      padding-block: var(--space-xl);
+    }
+
+    .diversidade-titulo-secao {
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: var(--space-xs);
+    }
+
+    .diversidade-subtitulo {
+      font-size: var(--text-base);
+      color: rgba(255,255,255,0.65);
+      font-style: italic;
+      margin-bottom: var(--space-lg);
+    }
+
+    .diversidade-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    @media (min-width: 640px) {
+      .diversidade-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1024px) {
+      .diversidade-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .div-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+    }
+
+    .div-card-titulo {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Barras CSS puras */
+    .barra-item {
+      margin-bottom: 0.85rem;
+    }
+
+    .barra-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.3rem;
+    }
+
+    .barra-label {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.85);
+    }
+
+    .barra-valor {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .barra-track {
+      height: 8px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .barra-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--gold), #fbbf24);
+      transition: width 0.8s ease;
+    }
+
+    .barra-fill.azul-fill   { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+    .barra-fill.laranja-fill{ background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .barra-fill.verde-fill  { background: linear-gradient(90deg, #22c55e, #4ade80); }
+
+    /* Divisão modal presencial/digital */
+    .modal-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-sm);
+    }
+
+    .modal-block {
+      border-radius: var(--radius-md);
+      padding: var(--space-sm);
+      text-align: center;
+    }
+
+    .modal-block.presencial {
+      background: linear-gradient(135deg, rgba(34,197,94,0.25), rgba(34,197,94,0.12));
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+
+    .modal-block.digital {
+      background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(59,130,246,0.12));
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    .modal-pct {
+      font-size: var(--text-3xl);
+      font-weight: 900;
+      font-family: 'Arial', sans-serif;
+      line-height: 1;
+    }
+
+    .modal-block.presencial .modal-pct { color: #4ade80; }
+    .modal-block.digital   .modal-pct { color: #60a5fa; }
+
+    .modal-desc {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.25rem;
+    }
+
+    /* Tags de público */
+    .publico-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .publico-tag {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    /* ============================================================
+       C5 — VOZES
+    ============================================================ */
+    .vozes {
+      background: var(--off-white);
+      padding-block: var(--space-xl);
+    }
+
+    .vozes-titulo-secao {
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: var(--space-xs);
+    }
+
+    .vozes-subtitulo {
+      font-size: var(--text-base);
+      color: var(--gray-500);
+      font-style: italic;
+      margin-bottom: var(--space-lg);
+    }
+
+    .vozes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    @media (min-width: 640px) {
+      .vozes-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .voz-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--cor-voz, var(--navy));
+    }
+
+    .voz-aspas {
+      font-size: 4rem;
+      line-height: 0.8;
+      color: var(--cor-voz, var(--navy));
+      opacity: 0.15;
+      font-family: Georgia, serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .voz-texto {
+      font-size: var(--text-lg);
+      font-style: italic;
+      color: var(--gray-700);
+      line-height: 1.6;
+      margin-bottom: var(--space-sm);
+    }
+
+    .voz-autor {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .voz-autor strong {
+      color: var(--cor-voz, var(--navy));
+    }
+
+    /* ============================================================
+       C6 — IMPACTO
+    ============================================================ */
+    .impacto {
+      background: var(--gray-100);
+      padding-block: var(--space-xl);
+    }
+
+    .impacto-titulo-secao {
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: var(--space-xs);
+    }
+
+    .impacto-subtitulo {
+      font-size: var(--text-base);
+      color: var(--gray-500);
+      font-style: italic;
+      margin-bottom: var(--space-lg);
+    }
+
+    .impacto-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    @media (min-width: 768px) {
+      .impacto-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .impacto-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      border-bottom: 4px solid var(--cor-impacto, var(--navy));
+    }
+
+    .impacto-card-icone {
+      font-size: 2rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .impacto-card-titulo {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: var(--space-xs);
+    }
+
+    .impacto-card-texto {
+      font-size: var(--text-sm);
+      color: var(--gray-700);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       RODAPÉ
+    ============================================================ */
+    .rodape {
+      background: var(--navy);
+      color: white;
+      padding-block: var(--space-lg);
+    }
+
+    .rodape-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .rodape-inner { grid-template-columns: auto 1fr; }
+    }
+
+    .rodape-logo-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .rodape-logo-text {
+      font-family: 'Arial', sans-serif;
+      font-weight: 900;
+      font-size: var(--text-xl);
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .rodape-logo-sub {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+    }
+
+    .rodape-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.15);
+      align-self: stretch;
+      display: none;
+    }
+
+    @media (min-width: 768px) { .rodape-divider { display: block; } }
+
+    .rodape-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .rodape-linha {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.75);
+    }
+
+    .rodape-nota {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.40);
+      margin-top: var(--space-sm);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       UTILITÁRIOS
+    ============================================================ */
+    .secao-label {
+      font-family: 'Arial', sans-serif;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gray-500);
+      margin-bottom: var(--space-xs);
+    }
+
+    .secao-label.inv { color: rgba(255,255,255,0.45); }
+
+    .linha-decorativa {
+      width: 48px;
+      height: 4px;
+      background: var(--cor-eixo, var(--gold));
+      border-radius: 2px;
+      margin-bottom: var(--space-sm);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     C0 — CAPA
+============================================================ -->
+<section class="capa" id="capa">
+  <div class="container capa-inner">
+
+    <div>
+      <div class="capa-tag">UNIP Araraquara · Psicologia · Semestre 2025-2</div>
+    </div>
+
+    <div>
+      <h1 class="capa-titulo">
+        EXTENSÃO EM<br>
+        <span class="destaque">PSICOLOGIA</span>
+      </h1>
+      <p class="capa-subtitulo">
+        Um raio-X das ações extensionistas: diversidade, alcance e impacto no semestre 2025-2
+      </p>
+    </div>
+
+    <blockquote class="capa-frase">
+      42 PROJETOS. 3 EIXOS. 7 CIDADES.<br>
+      UMA PSICOLOGIA QUE ACONTECE FORA DA SALA DE AULA.
+    </blockquote>
+
+    <div>
+      <p class="secao-label inv">Números do semestre</p>
+      <div class="metricas-grid">
+        <div class="metrica-card destaque-card">
+          <div class="metrica-numero">42</div>
+          <div class="metrica-label">Projetos realizados</div>
+        </div>
+        <div class="metrica-card">
+          <div class="metrica-numero">171</div>
+          <div class="metrica-label">Estudantes de Psicologia</div>
+        </div>
+        <div class="metrica-card">
+          <div class="metrica-numero">3</div>
+          <div class="metrica-label">Docentes orientadores</div>
+        </div>
+        <div class="metrica-card">
+          <div class="metrica-numero">7</div>
+          <div class="metrica-label">Cidades da região</div>
+        </div>
+        <div class="metrica-card destaque-card">
+          <div class="metrica-numero">+3.500</div>
+          <div class="metrica-label">Pessoas impactadas</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     C1 — EIXO COGNIÇÃO (Azul)
+============================================================ -->
+<div class="secao-separador" style="--cor-eixo: var(--azul)"></div>
+<section class="eixo eixo-azul" id="cognicao">
+  <div class="container">
+
+    <div class="eixo-header">
+      <span class="eixo-badge">Eixo 1</span>
+      <span class="eixo-turmas">PS12A52 + PS12P52</span>
+    </div>
+    <div class="linha-decorativa"></div>
+    <p class="secao-label">Processos Psicológicos Básicos</p>
+    <h2 class="eixo-titulo">Cognição &amp;<br>Memória</h2>
+    <p class="eixo-prof">Prof. Dr. <strong>Juhan Augusto Scardelato</strong> · Agosto–Novembro 2025</p>
+
+    <div class="eixo-grid">
+
+      <!-- Coluna texto -->
+      <div class="eixo-col-texto">
+        <span class="modalidade-badge">📱 13 digitais · 👥 2 presenciais</span>
+
+        <p class="eixo-descricao">
+          Os estudantes conduziram pesquisas científicas sobre memória, percepção e cognição — e traduziram esses resultados para a linguagem das redes sociais. Posts, carrosséis, vídeos e panfletos digitais levaram Psicologia para o Instagram de milhares de pessoas.
+        </p>
+
+        <p class="eixo-subtemas-titulo">Subtemas abordados</p>
+        <ul class="subtemas-lista">
+          <li>Memória em diferentes contextos: atletas vs sedentários, jovens vs idosos</li>
+          <li>Percepção visual e diferenças de gênero</li>
+          <li>Sensação, emoção e cognição — o efeito da música no cérebro</li>
+          <li>Consumo de conteúdo digital e capacidade de concentração</li>
+          <li>Memória emocional e experiências marcantes</li>
+        </ul>
+      </div>
+
+      <!-- Coluna stats + destaque -->
+      <div class="eixo-col-stats">
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-numero">68</div>
+            <div class="stat-label">Estudantes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-numero">15</div>
+            <div class="stat-label">Grupos</div>
+          </div>
+          <div class="stat-item" style="grid-column: span 2;">
+            <div class="stat-numero">~2.988</div>
+            <div class="stat-label">Alcance digital (Instagram)</div>
+          </div>
+        </div>
+
+        <div class="eixo-imagem">
+          <img src="infografico_imagens/01_cerebro_ampulheta_PS12.jpg"
+               alt="Cérebro e ampulheta representando memória e tempo — Eixo Cognição"
+               loading="lazy">
+        </div>
+
+        <div class="destaque-projeto">
+          <div class="destaque-projeto-tag">★ Projeto em destaque</div>
+          <div class="destaque-projeto-nome">"Memória em Ação"</div>
+          <div class="destaque-projeto-desc">
+            Intervenção presencial em Casa de Longa Permanência com idosos, combinada com divulgação digital que alcançou 955 seguidores no Instagram.
+          </div>
+          <div class="destaque-projeto-codigo">PS12A52 / Grupo 4</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     C2 — EIXO DESENVOLVIMENTO (Laranja)
+============================================================ -->
+<div class="secao-separador" style="--cor-eixo: var(--laranja)"></div>
+<section class="eixo eixo-laranja" id="desenvolvimento">
+  <div class="container">
+
+    <div class="eixo-header">
+      <span class="eixo-badge" style="background: var(--laranja);">Eixo 2</span>
+      <span class="eixo-turmas">PS34A52 + PS34P52</span>
+    </div>
+    <div class="linha-decorativa" style="--cor-eixo: var(--laranja)"></div>
+    <p class="secao-label">Psicologia do Desenvolvimento</p>
+    <h2 class="eixo-titulo" style="color: var(--laranja-dark)">Desenvolvimento<br>Infantil</h2>
+    <p class="eixo-prof">Prof. Dr. <strong style="color: var(--laranja)">Murilo Machado</strong> · Agosto–Novembro 2025</p>
+
+    <div class="eixo-grid">
+
+      <!-- Coluna texto -->
+      <div class="eixo-col-texto">
+        <span class="modalidade-badge" style="background: var(--laranja-light); color: var(--laranja-dark);">
+          👥 15 projetos 100% presenciais
+        </span>
+
+        <p class="eixo-descricao">
+          Através do Jogo das Cores Proibidas — ferramenta baseada na teoria de Vygotsky — os estudantes foram a parques, residências e escolas para brincar com crianças e observar como o jogo e as regras constroem o desenvolvimento cognitivo.
+        </p>
+
+        <p class="eixo-subtemas-titulo" style="color: var(--laranja)">Subtemas abordados</p>
+        <ul class="subtemas-lista">
+          <li>Teoria de Vygotsky: zona de desenvolvimento proximal e mediação semiótica</li>
+          <li>Jogo das Cores Proibidas como ferramenta pedagógica</li>
+          <li>Aprendizagem por meio do jogo e das regras</li>
+          <li>Autocontrole e inibição de respostas em crianças</li>
+          <li>Cartilhas educativas sobre o desenvolvimento infantil</li>
+        </ul>
+      </div>
+
+      <!-- Coluna stats + destaque -->
+      <div class="eixo-col-stats">
+        <div class="stat-grid" style="--cor-light: var(--laranja-light); --cor-dark: var(--laranja-dark); --cor-eixo: var(--laranja)">
+          <div class="stat-item">
+            <div class="stat-numero">56</div>
+            <div class="stat-label">Estudantes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-numero">15</div>
+            <div class="stat-label">Grupos</div>
+          </div>
+          <div class="stat-item" style="grid-column: span 2;">
+            <div class="stat-numero">~307</div>
+            <div class="stat-label">Participantes presenciais</div>
+          </div>
+        </div>
+
+        <div class="eixo-imagem">
+          <img src="infografico_imagens/02_adulto_crianca_cartas_PS34.jpg"
+               alt="Adulto e criança jogando cartas — Eixo Desenvolvimento"
+               loading="lazy">
+        </div>
+
+        <div class="destaque-projeto" style="background: var(--laranja-dark)">
+          <div class="destaque-projeto-tag">★ Projeto em destaque</div>
+          <div class="destaque-projeto-nome">"Jogo das Cores Proibidas"</div>
+          <div class="destaque-projeto-desc">
+            Aplicação no Parque Ecológico de Gavião Peixoto com 4 crianças em contexto natural, conduzido por 6 estudantes — teoria de Vygotsky ganhando vida no mundo real.
+          </div>
+          <div class="destaque-projeto-codigo">PS34A52 / Grupo 2</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     C3 — EIXO ESCOLAR (Verde)
+============================================================ -->
+<div class="secao-separador" style="--cor-eixo: var(--verde)"></div>
+<section class="eixo eixo-verde" id="escolar">
+  <div class="container">
+
+    <div class="eixo-header">
+      <span class="eixo-badge" style="background: var(--verde);">Eixo 3</span>
+      <span class="eixo-turmas">PS67P52</span>
+    </div>
+    <div class="linha-decorativa" style="--cor-eixo: var(--verde)"></div>
+    <p class="secao-label">Psicologia Escolar</p>
+    <h2 class="eixo-titulo" style="color: var(--verde-dark)">Escola &amp;<br>Comunidade</h2>
+    <p class="eixo-prof">Prof. Ms. <strong style="color: var(--verde)">Oliver Zancul Prado</strong> · Agosto–Novembro 2025</p>
+
+    <div class="eixo-grid">
+
+      <!-- Coluna texto -->
+      <div class="eixo-col-texto">
+        <span class="modalidade-badge" style="background: var(--verde-light); color: var(--verde-dark);">
+          🏫 12 projetos de pesquisa-ação
+        </span>
+
+        <p class="eixo-descricao">
+          Pesquisa-ação em escolas reais: diagnóstico institucional, intervenções com professores, gestores e alunos — e avaliação de impacto. Os estudantes entregaram cartilhas, baralhos educativos, histórias em quadrinhos e banners.
+        </p>
+
+        <p class="eixo-subtemas-titulo" style="color: var(--verde)">Subtemas abordados</p>
+        <ul class="subtemas-lista">
+          <li>Saúde mental de professores e gestores escolares</li>
+          <li>Competências socioemocionais: empatia, autocontrole, trabalho em grupo</li>
+          <li>Regulação emocional na adolescência (técnicas de TCC)</li>
+          <li>Inclusão de alunos com TEA (Transtorno do Espectro Autista)</li>
+          <li>Bullying, convivência e violência escolar</li>
+          <li>Saúde mental no pré-vestibular</li>
+        </ul>
+
+        <div style="margin-top: var(--space-md)">
+          <p class="eixo-subtemas-titulo" style="color: var(--verde)">Municípios atendidos</p>
+          <p style="font-size: var(--text-sm); color: var(--gray-700);">
+            Araraquara · Tabatinga · Monte Alto · Ibitinga · São Carlos · Santa Ernestina · Américo Brasiliense
+          </p>
+        </div>
+      </div>
+
+      <!-- Coluna stats + destaque -->
+      <div class="eixo-col-stats">
+        <div class="stat-grid" style="--cor-light: var(--verde-light); --cor-dark: var(--verde-dark); --cor-eixo: var(--verde)">
+          <div class="stat-item">
+            <div class="stat-numero">47</div>
+            <div class="stat-label">Estudantes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-numero">12</div>
+            <div class="stat-label">Grupos</div>
+          </div>
+          <div class="stat-item" style="grid-column: span 2;">
+            <div class="stat-numero">~302</div>
+            <div class="stat-label">Participantes presenciais</div>
+          </div>
+        </div>
+
+        <div class="eixo-imagem">
+          <img src="infografico_imagens/04_professora_sala_aula_PS34_PS67.jpg"
+               alt="Professora em sala de aula — Eixo Escolar"
+               loading="lazy">
+        </div>
+
+        <div class="destaque-projeto" style="background: var(--verde-dark)">
+          <div class="destaque-projeto-tag">★ Projeto em destaque</div>
+          <div class="destaque-projeto-nome">"Inclusão, Autismo na Escola"</div>
+          <div class="destaque-projeto-desc">
+            Resultado tangível e humano: um aluno com TEA que ficava isolado fez um novo amigo após as intervenções do grupo.
+          </div>
+          <div class="destaque-projeto-codigo">PS67P52 / Grupo 12</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     C4 — DIVERSIDADE
+============================================================ -->
+<section class="diversidade" id="diversidade">
+  <div class="container">
+
+    <p class="secao-label inv">Panorama geral</p>
+    <div class="linha-decorativa"></div>
+    <h2 class="diversidade-titulo-secao">A Diversidade das Ações</h2>
+    <p class="diversidade-subtitulo">
+      42 projetos diferentes, um denominador comum: Psicologia que transforma
+    </p>
+
+    <div class="diversidade-grid">
+
+      <!-- Card 1: Modalidades -->
+      <div class="div-card">
+        <p class="div-card-titulo">Modalidade</p>
+
+        <div class="modal-split">
+          <div class="modal-block presencial">
+            <div class="modal-pct">69%</div>
+            <div class="modal-desc">Presencial<br>29 grupos</div>
+          </div>
+          <div class="modal-block digital">
+            <div class="modal-pct">31%</div>
+            <div class="modal-desc">Digital<br>13 grupos</div>
+          </div>
+        </div>
+
+        <p class="div-card-titulo" style="margin-top: var(--space-sm)">Locais de atuação</p>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">🏫 Escolas</span><span class="barra-valor">12</span></div>
+          <div class="barra-track"><div class="barra-fill verde-fill" style="width:86%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">📱 Instagram</span><span class="barra-valor">13</span></div>
+          <div class="barra-track"><div class="barra-fill azul-fill" style="width:93%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">🌳 Parques / espaços públicos</span><span class="barra-valor">4</span></div>
+          <div class="barra-track"><div class="barra-fill laranja-fill" style="width:29%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">🎓 Campus UNIP</span><span class="barra-valor">3</span></div>
+          <div class="barra-track"><div class="barra-fill" style="width:21%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">🏠 Residências</span><span class="barra-valor">4</span></div>
+          <div class="barra-track"><div class="barra-fill" style="width:29%"></div></div>
+        </div>
+        <div class="barra-item" style="margin-bottom:0">
+          <div class="barra-header"><span class="barra-label">🏥 CER, EMEI, cursinho</span><span class="barra-valor">6</span></div>
+          <div class="barra-track"><div class="barra-fill verde-fill" style="width:43%"></div></div>
+        </div>
+      </div>
+
+      <!-- Card 2: Alcance geográfico -->
+      <div class="div-card">
+        <p class="div-card-titulo">Alcance geográfico — 7 cidades</p>
+
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Araraquara</span><span class="barra-valor">35</span></div>
+          <div class="barra-track"><div class="barra-fill azul-fill" style="width:100%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Tabatinga</span><span class="barra-valor">2</span></div>
+          <div class="barra-track"><div class="barra-fill" style="width:6%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Monte Alto</span><span class="barra-valor">1</span></div>
+          <div class="barra-track"><div class="barra-fill" style="width:3%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Ibitinga</span><span class="barra-valor">1</span></div>
+          <div class="barra-track"><div class="barra-fill" style="width:3%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">São Carlos</span><span class="barra-valor">1</span></div>
+          <div class="barra-track"><div class="barra-fill" style="width:3%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Santa Ernestina</span><span class="barra-valor">1</span></div>
+          <div class="barra-track"><div class="barra-fill" style="width:3%"></div></div>
+        </div>
+        <div class="barra-item" style="margin-bottom:0">
+          <div class="barra-header"><span class="barra-label">Américo Brasiliense</span><span class="barra-valor">1</span></div>
+          <div class="barra-track"><div class="barra-fill" style="width:3%"></div></div>
+        </div>
+
+        <div style="margin-top: var(--space-md)">
+          <p class="div-card-titulo">Alcance por eixo</p>
+          <div class="barra-item">
+            <div class="barra-header"><span class="barra-label">Eixo 1 — Cognição</span><span class="barra-valor">~2.988</span></div>
+            <div class="barra-track"><div class="barra-fill azul-fill" style="width:98%"></div></div>
+          </div>
+          <div class="barra-item">
+            <div class="barra-header"><span class="barra-label">Eixo 2 — Desenvolvimento</span><span class="barra-valor">~307</span></div>
+            <div class="barra-track"><div class="barra-fill laranja-fill" style="width:10%"></div></div>
+          </div>
+          <div class="barra-item" style="margin-bottom:0">
+            <div class="barra-header"><span class="barra-label">Eixo 3 — Escolar</span><span class="barra-valor">~302</span></div>
+            <div class="barra-track"><div class="barra-fill verde-fill" style="width:10%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Públicos atendidos -->
+      <div class="div-card">
+        <p class="div-card-titulo">Públicos atendidos</p>
+        <div class="publico-tags" style="margin-bottom: var(--space-sm)">
+          <span class="publico-tag">👧 Crianças (4–10 anos)</span>
+          <span class="publico-tag">🧑 Pré-adolescentes</span>
+          <span class="publico-tag">👨‍🎓 Adolescentes</span>
+          <span class="publico-tag">👩‍🏫 Professores</span>
+          <span class="publico-tag">🏫 Gestores escolares</span>
+          <span class="publico-tag">👴 Terceira idade</span>
+          <span class="publico-tag">📱 Público digital geral</span>
+        </div>
+
+        <p class="div-card-titulo" style="margin-top: var(--space-sm)">Ciclo escolar coberto</p>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Educação Infantil (4+ anos)</span></div>
+          <div class="barra-track"><div class="barra-fill verde-fill" style="width:50%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Ensino Fundamental I e II</span></div>
+          <div class="barra-track"><div class="barra-fill verde-fill" style="width:80%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Ensino Médio</span></div>
+          <div class="barra-track"><div class="barra-fill verde-fill" style="width:60%"></div></div>
+        </div>
+        <div class="barra-item">
+          <div class="barra-header"><span class="barra-label">Pré-vestibular</span></div>
+          <div class="barra-track"><div class="barra-fill azul-fill" style="width:25%"></div></div>
+        </div>
+        <div class="barra-item" style="margin-bottom:0">
+          <div class="barra-header"><span class="barra-label">Formação docente contínua</span></div>
+          <div class="barra-track"><div class="barra-fill laranja-fill" style="width:55%"></div></div>
+        </div>
+
+        <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(255,255,255,0.06); border-radius: var(--radius-md);">
+          <p style="font-family:'Arial',sans-serif; font-size: var(--text-xs); color: rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem;">Impacto direto presencial</p>
+          <p style="font-size: var(--text-2xl); font-weight:900; font-family:'Arial',sans-serif; color: #4ade80; line-height:1;">+609</p>
+          <p style="font-size: var(--text-xs); color: rgba(255,255,255,0.55); font-family:'Arial',sans-serif;">pessoas impactadas diretamente</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     C5 — VOZES
+============================================================ -->
+<section class="vozes" id="vozes">
+  <div class="container">
+
+    <p class="secao-label">Depoimentos</p>
+    <div class="linha-decorativa" style="--cor-eixo: var(--navy)"></div>
+    <h2 class="vozes-titulo-secao">Vozes da Experiência</h2>
+    <p class="vozes-subtitulo">O que disseram quem viveu de perto</p>
+
+    <div class="vozes-grid">
+
+      <div class="voz-card" style="--cor-voz: var(--verde)">
+        <div class="voz-aspas">"</div>
+        <p class="voz-texto">"É feio deixar o amiguinho sozinho."</p>
+        <p class="voz-autor"><strong>Criança</strong> · Educação Infantil · G6/PS67P52</p>
+      </div>
+
+      <div class="voz-card" style="--cor-voz: var(--azul)">
+        <div class="voz-aspas">"</div>
+        <p class="voz-texto">"Essa palestra nos fez enxergar que o acolhimento é parte do ensino. Precisamos cuidar do professor para cuidar dos alunos."</p>
+        <p class="voz-autor"><strong>Coordenadora escolar</strong> · G8/PS67P52</p>
+      </div>
+
+      <div class="voz-card" style="--cor-voz: var(--laranja)">
+        <div class="voz-aspas">"</div>
+        <p class="voz-texto">"Agora com as cartinhas é mais fácil lembrar!"</p>
+        <p class="voz-autor"><strong>Participante</strong> · G6/PS34A52</p>
+      </div>
+
+      <div class="voz-card" style="--cor-voz: var(--navy)">
+        <div class="voz-aspas">"</div>
+        <p class="voz-texto">"Foi bastante interessante distribuir a cartilha para a comunidade e sermos parte da divulgação deste assunto."</p>
+        <p class="voz-autor"><strong>Estudante de Psicologia</strong> · G5/PS34A52</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     C6 — IMPACTO
+============================================================ -->
+<section class="impacto" id="impacto">
+  <div class="container">
+
+    <p class="secao-label">Análise</p>
+    <div class="linha-decorativa" style="--cor-eixo: var(--navy)"></div>
+    <h2 class="impacto-titulo-secao">Por Que Isso Importa?</h2>
+    <p class="impacto-subtitulo">Três perspectivas sobre o semestre de extensão</p>
+
+    <div class="impacto-grid">
+
+      <div class="impacto-card" style="--cor-impacto: var(--verde)">
+        <div class="impacto-card-icone">🌱</div>
+        <h3 class="impacto-card-titulo">Ciclo completo da vida escolar</h3>
+        <p class="impacto-card-texto">
+          Os 42 projetos cobrem da Educação Infantil (4 anos) ao pré-vestibular, passando por todas as etapas do ensino fundamental e médio. Essa amplitude reflete a vocação abrangente da Psicologia Escolar e a versatilidade na formação dos estudantes.
+        </p>
+      </div>
+
+      <div class="impacto-card" style="--cor-impacto: var(--azul)">
+        <div class="impacto-card-icone">🔗</div>
+        <h3 class="impacto-card-titulo">O que une os três eixos</h3>
+        <p class="impacto-card-texto">
+          Em comum: todos partem de uma pergunta real, investigam um contexto concreto e propõem uma resposta prática. A diferença está no método — digital no PS12, lúdico-presencial no PS34, pesquisa-ação nas escolas no PS67.
+        </p>
+      </div>
+
+      <div class="impacto-card" style="--cor-impacto: var(--laranja)">
+        <div class="impacto-card-icone">🎓</div>
+        <h3 class="impacto-card-titulo">Impacto formativo</h3>
+        <p class="impacto-card-texto">
+          171 estudantes experimentaram o que significa levar o conhecimento para além da sala de aula: produzir pesquisa, comunicar com o público leigo, entrar em uma escola real, sentar no chão com uma criança, conversar com um professor exausto.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     RODAPÉ
+============================================================ -->
+<footer class="rodape">
+  <div class="container">
+    <div class="rodape-inner">
+      <div class="rodape-logo-area">
+        <div class="rodape-logo-text">UNIP</div>
+        <div class="rodape-logo-sub">Universidade Paulista</div>
+      </div>
+      <div class="rodape-divider"></div>
+      <div class="rodape-info">
+        <div class="rodape-linha"><strong>UNIP Araraquara</strong> · Instituto de Ciências Humanas · Curso de Psicologia</div>
+        <div class="rodape-linha">Semestre 2025-2 · Atividades de Extensão Universitária</div>
+        <div class="rodape-linha">
+          Prof. Dr. Juhan Augusto Scardelato &nbsp;·&nbsp;
+          Prof. Dr. Murilo Machado &nbsp;·&nbsp;
+          Prof. Ms. Oliver Zancul Prado
+        </div>
+        <div class="rodape-nota">
+          * O total de +3.500 pessoas inclui alcance digital via Instagram. Impacto presencial direto documentado: 609 pessoas.<br>
+          Dados extraídos dos 42 relatórios MEC de extensão, semestre 2025-2.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
