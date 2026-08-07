@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extensão em Psicologia — UNIP Araraquara 2026-1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Raleway:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-deep: #07366A;
+      --brand-primary: #075EBD;
+      --brand-navy: #000080;
+      --brand-accent: #FFED00;
+      --campaign-blue: #004DBE;
+      --text-primary: #212121;
+      --text-secondary: #6C757D;
+      --surface-primary: #FFFFFF;
+      --surface-soft: #FBFBFB;
+      --surface-muted: #F3F3F3;
+      --border-neutral: #D4D9DF;
+      --caixa-info-bg: #E4EFFC;
+      --caixa-atencao-bg: #FFFDD2;
+      --text-xs: clamp(0.70rem, 0.65rem + 0.25vw, 0.80rem);
+      --text-sm: clamp(0.85rem, 0.80rem + 0.25vw, 0.95rem);
+      --text-base: clamp(0.95rem, 0.90rem + 0.30vw, 1.10rem);
+      --text-lg: clamp(1.10rem, 1.00rem + 0.50vw, 1.30rem);
+      --text-xl: clamp(1.25rem, 1.10rem + 0.75vw, 1.60rem);
+      --text-2xl: clamp(1.50rem, 1.25rem + 1.25vw, 2.10rem);
+      --text-3xl: clamp(2.00rem, 1.60rem + 2.00vw, 3.20rem);
+      --text-hero: clamp(2.80rem, 2.00rem + 4.00vw, 5.50rem);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Rubik', sans-serif;
+      color: var(--text-primary);
+      background: var(--surface-soft);
+      line-height: 1.4;
+    }
+
+    /* === CAPA === */
+    section.capa {
+      background: var(--brand-navy);
+      color: white;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    section.capa img { width: 280px; margin-bottom: 2rem; }
+    section.capa h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      max-width: 900px;
+      margin-bottom: 0.5rem;
+    }
+    section.capa .subtitle {
+      font-size: var(--text-xl);
+      color: var(--brand-accent);
+      margin-bottom: 2rem;
+    }
+    .capa-metricas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .capa-metricas .metrica-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,237,0,0.3);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      min-width: 140px;
+    }
+    .capa-metricas .num {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--brand-accent);
+    }
+    .capa-metricas .label { font-size: var(--text-sm); opacity: 0.9; }
+
+    /* === TURMAS === */
+    section.eixo {
+      background: var(--eixo-bg, var(--brand-deep));
+      color: white;
+      padding: 3rem 2rem;
+    }
+    section.eixo:nth-child(even) {
+      background: var(--surface-primary);
+      color: var(--text-primary);
+    }
+    .eixo-header { max-width: 900px; margin: 0 auto 1.5rem; }
+    .eixo-tag {
+      display: inline-block;
+      background: var(--brand-accent);
+      color: var(--brand-deep);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 0.5rem;
+    }
+    .eixo-header h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .eixo-professor { font-size: var(--text-base); opacity: 0.9; }
+    .eixo-turmas { font-size: var(--text-sm); opacity: 0.7; }
+    .eixo-metricas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto 1.5rem;
+    }
+    .eixo-metricas .metrica {
+      text-align: center;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+    }
+    section.eixo:nth-child(even) .eixo-metricas .metrica {
+      background: var(--surface-muted);
+    }
+    .eixo-metricas .num {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--brand-accent);
+    }
+    section.eixo:nth-child(even) .eixo-metricas .num {
+      color: var(--brand-primary);
+    }
+    .eixo-metricas .label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+    .eixo-destaques {
+      max-width: 800px;
+      margin: 0 auto;
+      list-style: none;
+      font-size: var(--text-sm);
+      opacity: 0.85;
+    }
+    .eixo-destaques li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    section.eixo:nth-child(even) .eixo-destaques li {
+      border-bottom: 1px solid var(--border-neutral);
+    }
+
+    /* === DIVERSIDADE === */
+    section.diversidade {
+      background: var(--brand-deep);
+      color: white;
+      padding: 3rem 2rem;
+    }
+    .diversidade h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-2xl);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .diversidade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .diversidade-card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .diversidade-card h3 {
+      font-size: var(--text-lg);
+      color: var(--brand-accent);
+      margin-bottom: 0.5rem;
+    }
+    .diversidade-card p { font-size: var(--text-sm); opacity: 0.9; }
+
+    /* === VOZES === */
+    section.vozes {
+      background: var(--surface-primary);
+      padding: 3rem 2rem;
+    }
+    section.vozes h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-2xl);
+      color: var(--brand-deep);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .vozes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .vozes-card {
+      background: var(--caixa-info-bg);
+      border-left: 4px solid var(--brand-primary);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    .vozes-card blockquote {
+      font-size: var(--text-base);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+    .vozes-card figcaption {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    /* === IMPACTO === */
+    section.impacto {
+      background: var(--brand-navy);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    section.impacto h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-2xl);
+      margin-bottom: 1.5rem;
+    }
+    .impacto-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .impacto-card {
+      border: 1px solid rgba(255,237,0,0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .impacto-card .num {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--brand-accent);
+    }
+    .impacto-card .label { font-size: var(--text-sm); }
+
+    /* === AVALIAÇÃO === */
+    section.avaliacao {
+      background: var(--caixa-atencao-bg);
+      color: var(--brand-deep);
+      padding: 3rem 2rem;
+    }
+    section.avaliacao h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: var(--text-2xl);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .avaliacao-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .avaliacao-card {
+      background: white;
+      border-left: 4px solid var(--brand-accent);
+      border-radius: 8px;
+      padding: 1.2rem;
+      font-size: var(--text-sm);
+    }
+    .avaliacao-card strong { color: var(--brand-deep); }
+
+    /* === RODAPÉ === */
+    footer {
+      background: var(--brand-deep);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-size: var(--text-sm);
+    }
+    footer img { width: 200px; margin-bottom: 1rem; opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+<!-- C0: CAPA -->
+<section class="capa">
+  <img src="infografico_imagens/logo-unip.svg" alt="UNIP — Universidade Paulista">
+  <h1>Extensão Universitária em Psicologia</h1>
+  <p class="subtitle">UNIP Araraquara · Semestre 2026-1</p>
+  <div class="capa-metricas">
+    <div class="metrica-card"><span class="num">56</span><span class="label">grupos de extensão</span></div>
+    <div class="metrica-card"><span class="num">259</span><span class="label">estudantes</span></div>
+    <div class="metrica-card"><span class="num">14,435</span><span class="label">pessoas impactadas</span></div>
+    <div class="metrica-card"><span class="num">5</span><span class="label">turmas</span></div>
+    <div class="metrica-card"><span class="num">4</span><span class="label">professores</span></div>
+  </div>
+</section>
+
+<!-- C1–C5: TURMAS -->
+
+    <section class="eixo" style="--eixo-bg: #075EBD; --eixo-light: #E4EFFC;">
+      <div class="eixo-header">
+        <span class="eixo-tag">Turma 1º sem</span>
+        <h2>1º semestre</h2>
+        <p class="eixo-professor">Murilo José D'Almeida Machado · Psicologia e Processos de Trabalho (1º sem.)</p>
+        <p class="eixo-turmas">PS1P52 e PS1Q52 (Noturno)</p>
+      </div>
+      <div class="eixo-metricas">
+        <div class="metrica"><span class="num">11</span><span class="label">grupos</span></div>
+        <div class="metrica"><span class="num">47</span><span class="label">estudantes</span></div>
+        <div class="metrica"><span class="num">5,900</span><span class="label">part. digitais</span></div>
+        <div class="metrica"><span class="num">9</span><span class="label">part. presenciais</span></div>
+      </div>
+      <ul class="eixo-destaques"><li>A atividade de extensão consistiu na elaboração e divulgação de um material info</li><li>Elaboração e divulgação da cartilha informativa sobre a atuação do psicólogo nas</li><li>A PSICOLOGIA E A PESQUISA CIENTÍFICA</li></ul>
+    </section>
+    <section class="eixo" style="--eixo-bg: #07366A; --eixo-light: #D6E4F5;">
+      <div class="eixo-header">
+        <span class="eixo-tag">Turma 2º–3º sem</span>
+        <h2>2º-3º semestres</h2>
+        <p class="eixo-professor">Murilo José D'Almeida Machado · Psicologia Social (3º sem.)</p>
+        <p class="eixo-turmas">PS2A52/PS3A52 (Manhã)</p>
+      </div>
+      <div class="eixo-metricas">
+        <div class="metrica"><span class="num">16</span><span class="label">grupos</span></div>
+        <div class="metrica"><span class="num">73</span><span class="label">estudantes</span></div>
+        <div class="metrica"><span class="num">5,716</span><span class="label">part. digitais</span></div>
+        <div class="metrica"><span class="num">0</span><span class="label">part. presenciais</span></div>
+      </div>
+      <ul class="eixo-destaques"><li>O trabalho do psicólogo numa perspectiva social</li><li>O Trabalho do Psicólogo numa Perspectiva Social</li><li>Atuação do Psicólogo na Psicologia Social</li></ul>
+    </section>
+    <section class="eixo" style="--eixo-bg: #004DBE; --eixo-light: #E4EFFC;">
+      <div class="eixo-header">
+        <span class="eixo-tag">Turma 4º–5º sem</span>
+        <h2>4º-5º semestres</h2>
+        <p class="eixo-professor">Marinaldo Fernando de Souza · Teoria Psicanalítica (5º sem.)</p>
+        <p class="eixo-turmas">PS4A52/PS5A52 (Manhã)</p>
+      </div>
+      <div class="eixo-metricas">
+        <div class="metrica"><span class="num">10</span><span class="label">grupos</span></div>
+        <div class="metrica"><span class="num">59</span><span class="label">estudantes</span></div>
+        <div class="metrica"><span class="num">N. Inf.</span><span class="label">part. digitais</span></div>
+        <div class="metrica"><span class="num">N. Inf.</span><span class="label">part. presenciais</span></div>
+      </div>
+      <ul class="eixo-destaques"><li>A QUARTA LIÇÃO DE PSICANÁLISE:</li><li>Caso Anna O. e os Fundamentos da Psicanálise: Uma Revisão Bibliográfica a partir</li><li>DAIANE GABRIELA PEDROSO RODRIGUES – H645AG0</li></ul>
+    </section>
+    <section class="eixo" style="--eixo-bg: #000080; --eixo-light: #D6E4F5;">
+      <div class="eixo-header">
+        <span class="eixo-tag">Turma 6º–7º sem</span>
+        <h2>6º-7º semestres</h2>
+        <p class="eixo-professor">Fátima Aparecida Arena do Amaral · Psicopatologia Geral (6º sem.)</p>
+        <p class="eixo-turmas">PS6P52 (Noite)</p>
+      </div>
+      <div class="eixo-metricas">
+        <div class="metrica"><span class="num">14</span><span class="label">grupos</span></div>
+        <div class="metrica"><span class="num">48</span><span class="label">estudantes</span></div>
+        <div class="metrica"><span class="num">0</span><span class="label">part. digitais</span></div>
+        <div class="metrica"><span class="num">637</span><span class="label">part. presenciais</span></div>
+      </div>
+      <ul class="eixo-destaques"><li>“Brincar é Crescer: diminua o tempo de tela”</li><li>“A importância da pesquisa científica na graduação e na carreira profissional'</li><li>“A importância da pesquisa científica na graduação e na carreira profissional”</li></ul>
+    </section>
+    <section class="eixo" style="--eixo-bg: #075EBD; --eixo-light: #E4EFFC;">
+      <div class="eixo-header">
+        <span class="eixo-tag">Turma 8º–9º sem</span>
+        <h2>8º-9º semestres</h2>
+        <p class="eixo-professor">Luiz Roberto Marquezi Ferro · Pesquisa de Campo em Psicologia (8º-9º sem.)</p>
+        <p class="eixo-turmas">PS8P52/PS9P52 (Noite)</p>
+      </div>
+      <div class="eixo-metricas">
+        <div class="metrica"><span class="num">5</span><span class="label">grupos</span></div>
+        <div class="metrica"><span class="num">32</span><span class="label">estudantes</span></div>
+        <div class="metrica"><span class="num">2,173</span><span class="label">part. digitais</span></div>
+        <div class="metrica"><span class="num">0</span><span class="label">part. presenciais</span></div>
+      </div>
+      <ul class="eixo-destaques"><li>ATIVIDADES DE EXTENSÃO REALIZADAS EM 2026/1</li><li>Nome Completo e Funcional do Professor(a) Responsável: Prof. Dr. Luiz R. M. Ferr</li><li><table><tr><td rowspan=1 colspan=1>Nome e Descrição do Evento: DEPENDÊNCIA EMOCI</li></ul>
+    </section>
+
+<!-- DIVERSIDADE -->
+<section class="diversidade">
+  <h2>Modalidades, públicos e alcance</h2>
+  <div class="diversidade-grid">
+    <div class="diversidade-card">
+      <h3>Modalidades</h3>
+      <p>Carrosséis educativos no Instagram, publicações no TikTok, cartilhas digitais, panfletos, folders, evento presencial (roda de conversa), banner educativo e entrevistas com profissionais.</p>
+    </div>
+    <div class="diversidade-card">
+      <h3>Públicos alcançados</h3>
+      <p>Usuários de redes sociais, profissionais de serviços públicos (SUS, CRAS), comunidade escolar, pessoas idosas, comunidade acadêmica e público leigo em geral.</p>
+    </div>
+    <div class="diversidade-card">
+      <h3>Temas abordados</h3>
+      <p>Atuação do psicólogo (clínica, organizacional, jurídica, escolar, hospitalar, esportiva), Psicologia Social, psicanálise, saúde mental, inclusão, transfobia, gordofobia, pesquisa científica e desenvolvimento infantil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VOZES -->
+<section class="vozes">
+  <h2>Vozes da extensão</h2>
+  <div class="vozes-grid">
+        <figure class="vozes-card">
+          <blockquote>"A publicação da cartilha informativa no Instagram obteve um excelente retorno quantitativo e qualitativo, alcançando um total de 1.362 visualizações, das quais 74,2% foram de contas de não seguidores, expandindo significativamente as fronteiras da comunidade universitária."</blockquote>
+          <figcaption>Grupo 1 — 2º–3º semestres</figcaption>
+        </figure>
+        <figure class="vozes-card">
+          <blockquote>"A atividade proporcionou maior compreensão sobre como o comportamento humano é influenciado pelo contexto social, além de despertar maior sensibilidade para questões sociais relevantes."</blockquote>
+          <figcaption>Grupo 2 — 2º–3º semestres</figcaption>
+        </figure>
+        <figure class="vozes-card">
+          <blockquote>"A experiência permitiu identificar diferentes possibilidades de atuação profissional, contribuindo para a ampliação da visão dos estudantes acerca dos caminhos que podem ser seguidos na Psicologia."</blockquote>
+          <figcaption>Grupo 3 — 1º semestre</figcaption>
+        </figure>
+        <figure class="vozes-card">
+          <blockquote>"Os profissionais entrevistados relataram que a atividade foi importante para compartilhar experiências da prática clínica e contribuir com a formação de futuros psicólogos."</blockquote>
+          <figcaption>Grupo 5 — 1º semestre</figcaption>
+        </figure>
+</div>
+</section>
+
+<!-- IMPACTO -->
+<section class="impacto">
+  <h2>Impacto consolidado</h2>
+  <div class="impacto-grid">
+    <div class="impacto-card"><span class="num">13,789</span><span class="label">participantes digitais</span></div>
+    <div class="impacto-card"><span class="num">646</span><span class="label">participantes presenciais</span></div>
+    <div class="impacto-card"><span class="num">14,435</span><span class="label">total impactado</span></div>
+    <div class="impacto-card"><span class="num">56</span><span class="label">produtos de extensão</span></div>
+  </div>
+</section>
+
+<!-- AVALIAÇÃO -->
+<section class="avaliacao">
+  <h2>Avaliação e pontos de melhoria</h2>
+  <div class="avaliacao-grid">
+    <div class="avaliacao-card"><strong>Contabilização de participantes:</strong> 41 de 56 grupos (73%) declararam o número de participantes; a turma de 4º–5º semestres não registrou nenhum indicativo. Recomendação 2026-2: campo obrigatório no formulário.</div>
+    <div class="avaliacao-card"><strong>Discriminação presencial × digital:</strong> o formulário registra número único; a separação foi feita manualmente. Recomendação 2026-2: campos separados (participantes presenciais × alcance digital) e estímulo para ampliar as ações presenciais.</div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <img src="infografico_imagens/logo-unip.svg" alt="UNIP">
+  <p>Universidade Paulista — UNIP · Campus Araraquara · Curso de Psicologia</p>
+  <p>Coordenador: Prof. Ms. Oliver Zancul Prado · Instituto de Ciências Humanas (ICH)</p>
+  <p style="margin-top:0.5rem; opacity:0.6;">Semestre 2026-1</p>
+</footer>
+
+</body>
+</html>
