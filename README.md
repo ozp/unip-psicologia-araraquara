@@ -20,7 +20,7 @@ Cada semestre possui um `index.html` com o infográfico (visualizável pelo GitH
 
 | Semestre | Infográfico | Destaques |
 |---|---|---|
-| **2025-1** | [Ver infográfico](https://ozp.github.io/unip-psicologia-araraquara/extensao/2025-1/) | 7 grupos · 31 estudantes · Turma PS5P52 (Teoria Psicanalítica) |
+| **2025-1** | [Ver infográfico](https://ozp.github.io/unip-psicologia-araraquara/extensao/2025-1/) | 42 atividades · 202 estudantes · 3.470 pessoas impactadas |
 | **2025-2** | [Ver infográfico](https://ozp.github.io/unip-psicologia-araraquara/extensao/2025-2/) | Turmas PS12, PS34 e PS67 · materiais psicoeducativos |
 | **2026-1** | [Ver infográfico](https://ozp.github.io/unip-psicologia-araraquara/extensao/2026-1/) | 56 grupos · 259 estudantes · 5 turmas · 14.435 pessoas impactadas |
 
