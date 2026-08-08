@@ -21,7 +21,7 @@ Cada semestre possui um `index.html` com o infográfico (visualizável pelo GitH
 | Semestre | Infográfico | Destaques |
 |---|---|---|
 | **2025-1** | [Ver infográfico](https://ozp.github.io/unip-psicologia-araraquara/extensao/2025-1/) | 42 atividades · 202 estudantes · 3.470 pessoas impactadas |
-| **2025-2** | [Ver infográfico](https://ozp.github.io/unip-psicologia-araraquara/extensao/2025-2/) | Turmas PS12, PS34 e PS67 · materiais psicoeducativos |
+| **2025-2** | [Ver infográfico](https://ozp.github.io/unip-psicologia-araraquara/extensao/2025-2/) | 42 projetos · 171 estudantes · 3 eixos temáticos · 7 cidades · +3.500 pessoas impactadas |
 | **2026-1** | [Ver infográfico](https://ozp.github.io/unip-psicologia-araraquara/extensao/2026-1/) | 56 grupos · 259 estudantes · 5 turmas · 14.435 pessoas impactadas |
 
 ## Conteúdo típico do infográfico
